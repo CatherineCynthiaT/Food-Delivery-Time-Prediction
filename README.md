@@ -2,9 +2,11 @@
 
 This project focuses on creating a predictive model for estimating food delivery times using machine learning techniques. The primary goal is to forecast how long it will take for a food order to reach a customer based on various factors such as the delivery person's age, ratings, multiple deliveries, weather conditions, traffic density, and the distance between the restaurant and the delivery location. This project is divided into two main components: model development (`model.py`) and deployment through a web-based application (`app.py`).
 
+Access the web-based demo of the food delivery time prediction model [here](http://172.16.26.255:8501)
+
 ### Data Source
 
-The dataset used for this project can be obtained from here. https://www.kaggle.com/datasets/gauravmalik26/food-delivery-dataset
+The dataset used for this project can be obtained from [here](www.kaggle.com/datasets/gauravmalik26/food-delivery-dataset)
 
 ### Implementation Details
 
