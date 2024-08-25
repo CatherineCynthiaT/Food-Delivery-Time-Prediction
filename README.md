@@ -1,0 +1,4 @@
+
+This project focuses on predicting the delivery time for orders based on various factors such as the delivery person's age, ratings, multiple deliveries, weather conditions, road traffic density, and more. The dataset is preprocessed to handle missing values, convert categorical variables into numerical representations, and calculate the distance between the restaurant and delivery location.
+
+The machine learning model used is an **XGBoost Regressor**, which is trained on the cleaned and preprocessed dataset. The model's performance is evaluated using metrics like Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and R² score. The final model is saved for future use and has been deployed using **Streamlit**, allowing users to interact with the model through a user-friendly web interface.
