@@ -1,45 +1,42 @@
-### Project Overview
+# Project Overview  
+This project involves building a predictive model for estimating food delivery times using machine learning techniques. It focuses on forecasting delivery times based on factors such as delivery person's age, ratings, weather conditions, traffic density, multiple deliveries, and distance between the restaurant and delivery location. The project includes model development (`model.py`) and deployment via a web-based application (`app.py`).  
 
-This project focuses on creating a predictive model for estimating food delivery times using machine learning techniques. The primary goal is to forecast how long it will take for a food order to reach a customer based on various factors such as the delivery person's age, ratings, multiple deliveries, weather conditions, traffic density, and the distance between the restaurant and the delivery location. This project is divided into two main components: model development (`model.py`) and deployment through a web-based application (`app.py`).
+## Data Source  
+The dataset for this project can be obtained from [Kaggle](www.kaggle.com/datasets/gauravmalik26/food-delivery-dataset).  
 
+## Implementation Details  
 
-### Data Source
+### Model Development (`model.py`)  
+1. **Data Loading and Cleaning**:  
+   - Processed dataset to handle missing values and clean columns such as `Delivery_person_Age` and `multiple_deliveries`.  
+   - Extracted numerical values from the `Time_taken(min)` column.  
 
-The dataset used for this project can be obtained from [here](www.kaggle.com/datasets/gauravmalik26/food-delivery-dataset)
+2. **Feature Engineering**:  
+   - Calculated distances between restaurants and delivery locations using the `geodesic` function from the `geopy` library.  
 
-### Implementation Details
+3. **One-Hot Encoding**:  
+   - Converted categorical variables (e.g., weather conditions, road traffic density, city) into numerical features for model compatibility.  
 
-**Model Development (`model.py`):**
+4. **Model Training**:  
+   - Trained an `XGBRegressor` model to predict delivery times using training and testing splits.  
+   - Evaluated model performance using metrics like MSE, RMSE, and R² score.  
 
-1. **Data Loading and Cleaning:**
-The dataset is loaded and subjected to rigorous cleaning, including removing spaces and handling missing values. For instance, the 'Delivery_person_Age' and 'multiple_deliveries' columns are cleaned and converted to appropriate numeric types. The 'Time_taken(min)' column is also processed to extract numerical values for accurate predictions.
+5. **Model Saving**:  
+   - Saved the trained model as `delivery_time_model.json` for application deployment.  
 
-2. **Feature Engineering:**
-A critical aspect of the model involves calculating the distance between the restaurant and the delivery location using geographic coordinates. This distance is computed using the `geodesic` function from the `geopy` library and added as a new feature in the dataset.
+### Web-Based Application (`app.py`)  
+1. **User Interface Design**:  
+   - Built an interactive interface using Streamlit, allowing users to input delivery details and view predictions.  
+   - Designed with custom CSS for a clean, user-friendly layout.  
 
-3. **One-Hot Encoding:**
-Categorical variables such as weather conditions, road traffic density, type of order, type of vehicle, and city are transformed into numerical format using one-hot encoding. This step ensures that these variables can be effectively utilized by the machine learning model.
+2. **Prediction Mechanism**:  
+   - Integrated a prediction system to process user inputs and compute delivery time estimates using the trained model.  
 
-4. **Model Training:**
-The cleaned and processed dataset is split into training and testing sets. The `XGBRegressor` model from the XGBoost library is then trained on the training data to predict delivery times. The model's performance is evaluated using metrics like Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and R² score.
+3. **Real-Time Prediction**:  
+   - Enabled instant predictions with a "Predict Delivery Time" feature, displaying results dynamically.  
 
-5. **Model Saving:**
-After training, the model is saved as `delivery_time_model.json` for later use in the application.
+4. **Deployment**:  
+   - Deployed as a standalone web application accessible via any browser.  
 
-**Web-Based Application (`app.py`):**
-
-1. **User Interface Design:**
-The web application is developed using Streamlit, providing an interactive interface where users can input various details such as geographic coordinates, delivery person's age, ratings, and more. The app also includes a custom CSS design to enhance the user experience with a clean, visually appealing layout.
-
-2. **Prediction Mechanism:**
-The application allows users to input the required features, including calculating the distance between the restaurant and the delivery location. The user inputs are then used to create a data frame that mirrors the model's expected input format.
-
-3. **Real-Time Prediction:**
-Upon clicking the "Predict Delivery Time" button, the application uses the pre-trained XGBoost model to predict the estimated delivery time. The result is displayed on the screen, providing an intuitive and immediate response to the user's input.
-
-4. **Deployment:**
-The application is deployed as a standalone web interface, allowing users to access the delivery time prediction tool from any browser.
-
-### Results and Evaluation
-
-The XGBoost model demonstrated robust performance with an R² score of 0.82, indicating a strong correlation between the predicted and actual delivery times. The web application allows users to interactively predict delivery times, making the model's functionality accessible and practical for real-world applications in the food delivery industry.
+## Results and Evaluation  
+The `XGBRegressor` model achieved an R² score of 0.82, showcasing its ability to accurately predict food delivery times. The web application provides an intuitive and practical tool for real-world applications in the food delivery sector.  
